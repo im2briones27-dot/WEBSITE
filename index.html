@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabella Briones - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    :root {
+        --primary-green: #236826;
+        --dark-green: #18481a;
+        --text-dark: #1a1a1a;
+        --text-muted: #555555;
+        --bg-light: #ffffff;
+    }
+
+    body {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+    }
+
+    /* Header Navigation */
+    header {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-green);
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    nav {
+        display: flex;
+        gap: 2rem;
+    }
+
+    nav button, nav a.nav-btn {
+        background: none;
+        border: none;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary-green);
+        cursor: pointer;
+        transition: opacity 0.2s;
+        padding: 0.2rem 0;
+        text-decoration: none;
+    }
+
+    nav button:hover, nav button.active, nav a.nav-btn:hover {
+        border-bottom: 2px solid var(--primary-green);
+    }
+
+    /* Container */
+    .container {
+        max-width: 1100px;
+        margin: 2rem auto 4rem auto;
+        padding: 0 1.5rem;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .section-title {
+        font-size: 2.8rem;
+        color: var(--primary-green);
+        text-align: center;
+        margin-bottom: 2.5rem;
+        font-weight: 700;
+    }
+
+    /* Home Page Layout */
+    .home-top {
+        display: flex;
+        gap: 4rem;
+        align-items: flex-start;
+        margin-bottom: 4rem;
+        min-height: 50vh;
+    }
+
+    .profile-side {
+        width: 300px;
+        flex-shrink: 0;
+    }
+
+    /* Profile Image Enhancements */
+.profile-img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    
+    /* Subtle border & layered shadow to eliminate "flat white" look */
+    border: 1px solid rgba(35, 104, 38, 0.12);
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(35, 104, 38, 0.06);
+    
+    /* Gentle floating entry animation */
+    animation: profileFloat 6s ease-in-out infinite;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.profile-img:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 40px -10px rgba(35, 104, 38, 0.2);
+}
+
+@keyframes profileFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+    .profile-side h1 {
+        font-size: 2rem;
+        color: var(--primary-green);
+        font-weight: 800;
+        margin-bottom: 0.2rem;
+    }
+
+    .profile-side p {
+        color: var(--text-dark);
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+/* Staggered entrance for the Bio side */
+.bio-side {
+    flex-grow: 1;
+    padding-top: 1rem;
+    animation: fadeInBio 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInBio {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dynamic Accent Line */
+.green-accent-line {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-green) 0%, #4caf50 100%);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    transform-origin: left;
+    animation: expandLine 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes expandLine {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+/* Gradient highlight on key bold text */
+.bio-side h2 strong {
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-green) 0%, #1e5221 100%);
+    
+    /* Included both prefixed and standard properties to fix linter errors */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Standard fallback */
+}
+.bio-side p {
+        color: var(--text-dark);
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    /* Add this rule to control spacing over About paragraphs */
+    .bio-text {
+        margin-top: 1.5rem; /* Adjust 1.5rem higher or lower to change space */
+    }
+
+    .home-love-section {
+        padding-top: 10vh;
+        margin-bottom: 5rem;
+    }
+
+    .love-section-title {
+        font-size: 1.8rem;
+        color: var(--primary-green);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    /* Home Page "Things I Love" Section */
+    .love-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .love-card {
+        overflow: hidden;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .love-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 0.8rem;
+        display: block;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .love-card:hover img {
+        transform: scale(1.08);
+    }
+
+    .love-card p {
+        font-weight: 700;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+    }
+
+    /* Projects Page */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem 2rem;
+    }
+
+    .project-card {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #ffffff;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(35, 104, 38, 0.15);
+    }
+
+    .project-image-wrapper {
+        width: 100%;
+        height: 320px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .project-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .project-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .project-card h3 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem 1rem 1rem 1rem;
+        color: #ffffff;
+        font-size: 1.15rem;
+        font-weight: 700;
+        text-align: center;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+        z-index: 2;
+        transition: color 0.3s ease;
+    }
+
+    .project-card:hover h3 {
+        color: #a3e635;
+    }
+
+    /* Writing Page Layout Fixes */
+    .writing-hero {
+        min-height: 25vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .writing-subheaders {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 1.5rem;
+    }
+
+    .writing-subheaders a {
+        color: var(--primary-green);
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.2s;
+    }
+
+    .writing-subheaders a:hover {
+        transform: translateY(-2px);
+        text-decoration: underline;
+    }
+
+    .writing-section {
+        padding-top: 3rem;
+        margin-bottom: 5rem;
+    }
+
+    .writing-section-title {
+        color: var(--primary-green);
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+    .writing-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem 2rem;
+    }
+
+    .photo-essay-card {
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .photo-essay-card div {
+        flex: 1;
+    }
+
+    .photo-essay-card h4 {
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+    }
+
+    .photo-essay-card p {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    .photo-essay-card img {
+        width: 220px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 4px;
+        flex-shrink: 0;
+    }
+
+    .read-more {
+        font-weight: 700;
+        color: var(--text-dark);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .op-ed-card {
+        background-color: var(--primary-green);
+        color: #ffffff;
+        padding: 2rem;
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .op-ed-card h4 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .op-ed-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #e2e8f0;
+    }
+
+    .op-ed-card .read-more {
+        color: #ffffff;
+    }
+
+    .fact-sheet-card {
+        text-align: center;
+    }
+
+    .fact-sheet-card h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        min-height: 2.5rem;
+    }
+
+    .fact-sheet-card img {
+        width: 100%;
+        max-width: 320px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Footer Icons */
+    footer {
+        padding: 3rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .social-footer-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .social-footer-icons a, .social-footer-icons button {
+        color: var(--primary-green);
+        font-size: 2.5rem;
+        transition: color 0.2s, transform 0.2s;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .social-footer-icons a:hover, .social-footer-icons button:hover {
+        color: var(--dark-green);
+        transform: translateY(-2px);
+    }
+
+    /* Scroll Reveal with Scale Animation */
+    .reveal {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+/* ==========================================
+   CORRECTED MODAL STYLES
+   ========================================== */
+
+/* Universal Modal Overlay (Hidden by default) */
+.modal-overlay,
+.modal,
+#clip-modal,
+#surveying-modal,
+#project-modal {
+    display: none; /* Keeps modal hidden until active */
+    position: fixed; /* Fixed position covers entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+/* Active State (Triggered via JavaScript) */
+.modal-overlay.active,
+.modal.active,
+#clip-modal.active,
+#surveying-modal.active,
+#project-modal.active {
+    display: flex !important; /* Force flex display when opened */
+}
+
+/* Modal Content Box */
+.modal-content {
+    background: #ffffff;
+    max-width: 750px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    border-radius: 16px;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Scrollbar Styling for Modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-green);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-green);
+}
+
+/* Close Button */
+.modal-close,
+.close-btn {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    line-height: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover,
+.close-btn:hover {
+    color: var(--primary-green);
+}
+
+/* Typography & Layout Elements inside Modals */
+.modal-body h2,
+.modal-content h2 {
+    color: var(--primary-green);
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    padding-right: 2rem;
+}
+
+.project-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+}
+
+.modal-section {
+    margin-bottom: 32px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.modal-section h3 {
+    font-size: 1.3rem;
+    color: var(--primary-green);
+    margin-bottom: 12px;
+}
+
+.modal-section h4 {
+    font-size: 1.05rem;
+    margin-top: 16px;
+    margin-bottom: 6px;
+}
+
+.image-wrapper {
+    margin: 16px 0;
+    text-align: center;
+}
+
+.image-wrapper img,
+.modal-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.image-grid {
+    display: grid;
+    gap: 16px;
+    margin: 16px 0;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.image-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+}
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .home-top, .writing-grid, .projects-grid, .love-grid {
+            grid-template-columns: 1fr;
+            flex-direction: column;
+        }
+        .profile-side {
+            width: 100%;
+        }
+        .writing-subheaders {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+        }
+        .photo-essay-card {
+            flex-direction: column-reverse;
+        }
+        .photo-essay-card img {
+            width: 100%;
+            height: 200px;
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="openTabDirect('home')">Isabella Briones</div>
+        <nav>
+            <button class="tab-btn active" onclick="openTab(event, 'home')">Home</button>
+            <button class="tab-btn" onclick="openTab(event, 'about')">About</button>
+            <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
+            <button class="tab-btn" onclick="openTab(event, 'writing')">Writing</button>
+            <a href="#footer-contact" class="nav-btn" onclick="scrollToContact(event)">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <section id="home" class="tab-content active">
+            <div class="home-top">
+                <div class="profile-side">
+                    <img src="images/headshot.jpg" alt="Isabella Briones" class="profile-img">
+                    <h1>Isabella Briones</h1>
+                    <p>Civil Engineering and Energy<br>Student at Duke University</p>
+                </div>
+                <div class="bio-side">
+                    <div class="green-accent-line"></div>
+                    <h2>
+                        Hi, I'm Isabella! I'm interested in all things <strong>sustainability, energy, and engineering.</strong>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="home-love-section">
+                <h3 class="love-section-title reveal">Some things I love!</h3>
+                <div class="love-grid">
+                    <div class="love-card reveal">
+                        <img src="images/egrteam.JPG" alt="Engineering Team">
+                        <p>Engineering team final presentation</p>
+                    </div>
+                    <div class="love-card reveal">
+                        <img src="images/lobby.jpg" alt="Capitol Hill">
+                        <p>Lobbying on Capitol Hill</p>
+                    </div>
+                    <div class="love-card reveal">
+                        <img src="images/cohort.jpg" alt="Rachel Carson Cohort">
+                        <p>Rachel Carson Council Cohort</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<div id="about" class="tab-content">
+    <div class="home-top reveal">
+        
+        <div class="profile-side">
+            <div class="profile-card-wrapper">
+                <img src="images/headshot.jpg" alt="Isabella Briones" class="profile-img">
+            </div>
+            <h1>Isabella Briones</h1>
+            <p>Civil Engineering and Energy Student at Duke University</p>
+        </div>
+
+        <div class="bio-side">
+            <div class="green-accent-line"></div>
+            
+            <h2>
+                I am a <strong>Sophomore at Duke University</strong> majoring in Civil Engineering with a Certificate in Energy and the Environment.
+            </h2>
+            
+            <p class="bio-text">
+                I believe that science and storytelling go hand in hand. My interests span from hands-on engineering and technical projects to creative writing and policy work. I am particularly interested in optimizing transportation and systems engineering, expanding solar and geothermal energy, and advocating for environmental justice.
+            </p>
+
+            <p class="bio-text">
+                At Duke, I am involved in the <strong>Duke Climate Coalition</strong>, <strong>Duke Energy and Climate Club</strong>, <strong>Business-Oriented Women</strong>, <strong>Society of Women Engineers</strong>, and <strong>American Society of Civil Engineers</strong>. I also work at the Fuqua School of Business in their ClimateCAP program as a Digital Media Intern, assisting with writing, communications, and social media.
+            </p>
+
+            <p class="bio-text">
+                I am originally from Millis, Massachusetts, and love to read, workout, and watch sports!
+            </p>
+
+            <div class="resume-wrapper">
+                <a href="images/Briones.Isabella.Fall2026.resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-btn">
+                    <i class="fa-solid fa-file-pdf"></i> View Resume
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <section id="projects" class="tab-content">
+            <h1 class="section-title">Projects</h1>
+            <div class="projects-grid">
+                
+                <div class="project-card reveal" onclick="openProjectModal('heat-mapping')">
+                    <div class="project-image-wrapper">
+                        <img src="images/heat.jpg" alt="Mapping Heat Project">
+                    </div>
+                    <h3>Mapping Heat and Walkability for Duke Heat Governance</h3>
+                </div>
+
+                <div class="project-card reveal" onclick="openClipModal()">
+                    <div class="project-image-wrapper">
+                        <img src="images/clip.JPG" alt="Volumetric Measuring Clip">
+                    </div>
+                    <h3>User Friendly Volumetric Measuring Clip</h3>
+                </div>
+
+                <div class="project-card reveal" onclick="openSurveyingModal()">
+                    <div class="project-image-wrapper">
+                        <img src="images/cad.png" alt="AutoCAD Surveying">
+                    </div>
+                    <h3>Land Surveying/AutoCAD Physics Building</h3>
+                </div>
+
+                <div class="project-card reveal" onclick="openRoomFiltrationModal()">
+                    <div class="project-image-wrapper">
+                        <img src="images/filter.png" alt="Room Filtration System">
+                    </div>
+                    <h3>Room Filtration System (RFS)</h3>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="writing" class="tab-content">
+            <div class="writing-hero">
+                <h1 class="section-title">Writing</h1>
+                <div class="writing-subheaders">
+                    <a href="#photo-essays">Photo Essays</a>
+                    <a href="#op-eds">Opinion-Editorials</a>
+                    <a href="#fact-sheets">Fact Sheets</a>
+                </div>
+            </div>
+
+            <div id="photo-essays" class="writing-section">
+                <h3 class="writing-section-title">Photo Essays</h3>
+                <div class="writing-grid">
+                    
+                    <div class="photo-essay-card reveal">
+                        <div>
+                            <h4><a href="https://rachelcarsoncouncil.org/the-disappearing-act/" target="_blank" style="color: inherit; text-decoration: none;">The Disappearing Act</a></h4>
+                            <p>Magic tricks were ubiquitous in my childhood. No, my brother never pulled a coin from behind my ear, and the infamous card... 
+                                <a href="https://rachelcarsoncouncil.org/the-disappearing-act/" target="_blank" class="read-more">Read More</a>
+                            </p>
+                        </div>
+                        <a href="https://rachelcarsoncouncil.org/the-disappearing-act/" target="_blank">
+                            <img src="images/sunset.png" alt="Sunset over sea">
+                        </a>
+                    </div>
+
+                    <div class="photo-essay-card reveal">
+                        <div>
+                            <h4><a href="images/woods.pdf" target="_blank" style="color: inherit; text-decoration: none;">Getting Lost in the Woods: Lessons from Transcendentalism</a></h4>
+                            <p>What would happen if you abandoned everything right now and isolated yourself in the woods for two years? Probably nothing good. You'd be bitten by ticks... 
+                                <a href="images/woods.pdf" target="_blank" class="read-more">Read More</a>
+                            </p>
+                        </div>
+                        <a href="images/woods.pdf" target="_blank">
+                            <img src="images/woods.png" alt="Lake and woods">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="op-eds" class="writing-section">
+                <h3 class="writing-section-title">Opinion-Editorials</h3>
+                <div class="writing-grid">
+                    
+                    <div class="op-ed-card reveal">
+                        <h4>
+                            <a href="images/balcony.pdf" target="_blank" style="color: inherit; text-decoration: none;">
+                                Is plug-in solar the next air fryer?
+                            </a>
+                        </h4>
+                        <p>A few years ago, air fryers took America by storm. They were affordable, convenient, and you could find them on any shelf at the store. Could plug-in solar become clean energy's version of the air fryer?... 
+                            <a href="images/balcony.pdf" target="_blank" class="read-more">Read More</a>
+                        </p>
+                    </div>
+
+                    <div class="op-ed-card reveal">
+                        <h4>
+                            <a href="images/chalance.pdf" target="_blank" style="color: inherit; text-decoration: none;">
+                                Chalance is Cool: Overcoming Barriers to Student Voices in 2026 Midterms
+                            </a>
+                        </h4>
+                        <p>Magic tricks were ubiquitous in my childhood. No, my brother never pulled a coin from behind my ear, and the infamous card... 
+                            <a href="images/chalance.pdf" target="_blank" class="read-more">Read More</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="fact-sheets" class="writing-section">
+                <h3 class="writing-section-title">Fact Sheets</h3>
+                <div class="writing-grid">
+                    
+                    <div class="fact-sheet-card reveal">
+                        <h4>
+                            <a href="https://rachelcarsoncouncil.org/wp-content/uploads/2026/06/FactSheet_Greenways_2026.pdf" target="_blank" style="color: inherit; text-decoration: none;">
+                                Greenways as a Form of Sustainable Transportation
+                            </a>
+                        </h4>
+                        <a href="https://rachelcarsoncouncil.org/wp-content/uploads/2026/06/FactSheet_Greenways_2026.pdf" target="_blank">
+                            <img src="images/greenways.png" alt="Fact sheet document">
+                        </a>
+                    </div>
+
+                    <div class="fact-sheet-card reveal">
+                        <h4>
+                            <a href="images/leave.pdf" target="_blank" style="color: inherit; text-decoration: none;">
+                                Creating Safer Communities Through Active Transportation Infrastructure
+                            </a>
+                        </h4>
+                        <a href="images/leave.pdf" target="_blank">
+                            <img src="images/bill.png" alt="Fact sheet document">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer id="footer-contact">
+        <div class="social-footer-icons">
+            <a href="https://www.linkedin.com/in/isabella-briones-2a2720321" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <button onclick="copyEmail()" aria-label="Copy Email Address" title="Copy email address">
+                <i class="fas fa-envelope"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Main Dynamic Project Modal -->
+    <div id="project-modal" class="modal-overlay" onclick="closeProjectModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeProjectModal(event)">&times;</button>
+            <div id="modal-body-content" class="modal-body">
+            </div>
+        </div>
+    </div>
+
+    <!-- Static Volumetric Clip Modal -->
+    <div id="clip-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            
+            <h2>User-Friendly Volumetric Measuring Clip</h2>
+            <p class="project-subtitle">Engineering Design and Communication Project | B3 Coffee</p>
+            
+            <!-- Section 1: Background & Problem -->
+            <section class="modal-section">
+                <h3 style="color:#2e7d32;">Background</h3>
+                <p>For my Engineering Design and Communication class, my teammates and I were assigned a semester-long design project for a real company. We worked with B3 Coffee in Chapel Hill, North Carolina, a cafe dedicated to providing vocational opportunities for people of all abilities.</p>
+                
+                <h3 style="color:#2e7d32;">The Problem</h3>
+                <p>All employees (regardless of disability status) have trouble seeing the lines in the pre-existing metal pitchers, which then affects the amount of milk they use and the quality of the drinks they serve.</p>
+                
+                <div class="image-wrapper">
+                    <img src="images/background.png" alt="Existing metal pitcher with interior measurement markings">
+                </div>
+            </section>
+
+            <!-- Section 2: Design Process -->
+            <section class="modal-section">
+                <h3 style="color:#2e7d32;">Design Process</h3>
+                
+                <h4>Brainstorming</h4>
+                <p>My teammates and I first started by researching existing solutions, conducting different brainstorming techniques, and interviewing employees at B3 Coffee to get as much background information as possible.</p>
+                
+                <h4>Design Criteria</h4>
+                <p>After interviewing B3 employees, we wrote design criteria to guide our design process. The solution had to be simple, intuitive, durable, accurate, and replicable. We then made Pugh Scoring Charts and other quantitative metrics to grade our prototypes and ideas.</p>
+                
+                <h4>Prototyping</h4>
+                <p>We went through many stages of the prototyping process. We first started with low-fidelity, incomplete prototypes, then moved to medium-fidelity, and finally, constructed two high-fidelity prototypes to thoroughly test and evaluate.</p>
+                
+                <div class="image-grid grid-2">
+                    <img src="images/funnel.png" alt="Early cardboard and tape pitcher modification prototype">
+                    <img src="images/three.png" alt="Low and medium fidelity cardboard pitcher prototypes">
+                </div>
+            </section>
+
+            <!-- Section 3: Final Product -->
+            <section class="modal-section">
+                <h3 style="color:#2e7d32;">Final Product</h3>
+                <p>Our final product was the Honeycomb Clip. The clip attaches to the side of the metal pitcher and the honeycomb grid indicates where the employee stops pouring milk. We created three different clips for three different milk volumes that are used at the cafe.</p>
+                <p>The clip is made of laser-cut acrylic, with the design made on Adobe Illustrator. Along with multiple of each clip, we made a stand for organization.</p>
+                
+                <div class="image-wrapper">
+                    <img src="images/laser.png" alt="Technical schematic of the Honeycomb Clip showing dimensions and fold angles">
+                </div>
+            </section>
+
+            <!-- Section 4: Final Presentation -->
+            <section class="modal-section">
+                <h3 style="color:#2e7d32;">Final Presentation</h3>
+                <div class="image-wrapper">
+                    <img src="images/poster.png" alt="Duke Pratt School of Engineering presentation poster for B3 Coffee project">
+                </div>
+            </section>
+
+            <!-- Section 5: Photo Gallery -->
+            <section class="modal-section">
+                <h3 style="color:#2e7d32;">Photo Gallery</h3>
+                <div class="image-grid grid-3">
+                    <img src="images/gallery1.JPG" alt="Blue honeycomb clip inside pitcher top view">
+                    <img src="images/gallery2.JPG" alt="Blue clip attached to exterior handle of metal pitcher">
+                    <img src="images/gallery3.JPG" alt="Red honeycomb clip placed inside pitcher during milk pour">
+                </div>
+            </section>
+        </div>
+    </div>
+                <!-- Land Surveying Modal -->
+    <div id="surveying-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeSurveyingModal()">&times;</span>
+            
+            <h2>Land Surveying & AutoCAD Mapping</h2>
+            
+            <!-- Section 1: Background -->
+            <section class="modal-section">
+                <h3 style="color: #2e7d32;">Background</h3>
+                <p>
+                    In my Engineering the Planet Class (Civil Engineering class), our final project was to survey a building on Duke’s campus and construct a horizontal and vertical view of the building in AutoCAD.
+                </p>
+            </section>
+
+            <!-- Section 2: Surveying -->
+            <section class="modal-section">
+                <h3 style="color: #2e7d32;">Surveying</h3>
+                <p>
+                    My partner and I surveyed the Physics Building on our campus. To ensure accuracy, measurements were tied into permanent benchmarks on campus. For every point we took, we referenced it back to our benchmarks so we always had a point in reference to two other points in space. Throughout the surveying, we used an auto level, optical theodolite, and electronic theodolite.
+                </p>
+                <p>
+                    Features surveyed included walkways, trees, bushes, benches, windows, and doors. Using the optical theodolite, we were able to calculate the vertical angles for the building facade and vertical profile. Every measurement taken was written down in our field notebook using proper field techniques.
+                </p>
+                <!-- Photo Gallery: Surveying Equipment & Fieldwork -->
+                <div class="image-grid grid-3">
+                    <img src="images/gallery4.png" alt="Electronic theodolite digital screen reading angles">
+                    <img src="images/gallery5.png" alt="Student holding leveling rod against the Physics Building facade">
+                    <img src="images/gallery6.png" alt="Electronic theodolite mounted on a tripod outdoors">
+                </div>
+            </section>
+
+            <!-- Section 3: AutoCAD -->
+            <section class="modal-section">
+                <h3 style="color: #2e7d32;">AutoCAD</h3>
+                <p>
+                    I was in charge of creating the horizontal view from the data we collected. Through the use of different layers, I input points after each day we surveyed, so every day was on a different layer. After all of the days, I lined up the benchmarks. Included in the horizontal view is a title block, legend, and compass.
+                </p>
+            </section>
+
+            <!-- Section 4: Final Aerial View -->
+            <section class="modal-section">
+                <h3 style="color: #2e7d32;">Final Aerial View</h3>
+                <div class="single-image-container">
+                    <img src="images/drawing.png" alt="Final AutoCAD Aerial View blueprint drawing of the Physics Building site plan" style="width: 100%; border-radius: 8px;">
+                </div>
+        </section>
+    </div>
+</div>
+<!-- Room Filtration System Modal -->
+<div id="room-filtration-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeRoomFiltrationModal()">&times;</button>
+        
+        <h2>Room Filtration System (RFS)</h2>
+        
+        <!-- Section 1: Background -->
+        <section class="modal-section">
+            <h3 style="color: var(--primary-green);">Background</h3>
+            <p>My team and I were tasked with designing a Room Filtration System (RFS) that bring the particulate matter of a room to a safe level of 10 ug/m3, along with a Clean Air Delivery Rate (CADR) of 300 m3/hr.</p>
+        </section>
+
+        <!-- Section 2: Design Process -->
+        <section class="modal-section">
+            <h3 style="color: var(--primary-green);">Design Process</h3>
+            <p>My teammates and I brainstormed different air filter prototypes. We had iterations with wheels, 3 filters, 1 filter, and 4 filters. After conducting further testing, we decided to pursue a system with four MERV 11 filters and a box fan on top.</p>
+        </section>
+
+        <!-- Section 3: Testing and Data Analysis -->
+        <section class="modal-section">
+            <h3 style="color: var(--primary-green);">Testing and Data Analysis</h3>
+            <p>In order to test the RFS, we placed it in a sealed room with a candle lit, and measured the amount of particulate matter in the room over time.</p>
+            
+            <p>Our team then calculated the total loss rate and air exchange rate. We observed a difference of +8.82 hr-1 between the control and the experimental tests. This highlights how the air filter was effective and filtered more air in less time. This is because we utilized four air filters total, which allowed for more air filtration overall.</p>
+            
+            <p>The CADR of the air filter using the dimensions of the room provided (75 m3) is 661.5 m3/hr. This is significantly higher than the required 300 m3/hr goal, and would therefore save everyone from the zombie apocalypse.</p>
+        </section>
+
+        <!-- Section 4: Data & Image Gallery -->
+        <section class="modal-section">
+            <div class="image-grid grid-2">
+                <img src="images/graph1.png" alt="Comparison of the Decay of PMroom with and without Air Filter">
+                <img src="images/graph2.png" alt="Decay of PMroom with Air Filter">
+                <img src="images/graph3.png" alt="Decay of PMroom without Air Filter">
+                <img src="images/fan.png" alt="Room Filtration System Prototype with box fan">
+            </div>
+        </section>
+    </div>
+</div>
+        
+    </div>
+
+    <script>
+
+// Volumetric Clip Modal
+function openClipModal() {
+    const modal = document.getElementById('clip-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeClipModal() {
+    const modal = document.getElementById('clip-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+// Land Surveying Modal
+function openSurveyingModal() {
+    const modal = document.getElementById('surveying-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+function closeSurveyingModal() {
+    const modal = document.getElementById('surveying-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+function openRoomFiltrationModal() {
+    document.getElementById('room-filtration-modal').classList.add('active');
+}
+
+function closeRoomFiltrationModal() {
+    document.getElementById('room-filtration-modal').classList.remove('active');
+}
+// Dynamic Project Modal (Heat Mapping, RFS, etc.)
+function openProjectModal(projectId) {
+    const project = projectDetails[projectId];
+    if (!project) return;
+
+    const modalBody = document.getElementById('modal-body-content');
+    if (modalBody) {
+        modalBody.innerHTML = `
+            <h2>${project.title}</h2>
+            <img src="${project.image}" alt="${project.title}">
+            <div>${project.description}</div>
+        `;
+    }
+    const projectModal = document.getElementById('project-modal');
+    if (projectModal) {
+        projectModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+function closeProjectModal() {
+    const projectModal = document.getElementById('project-modal');
+    if (projectModal) {
+        projectModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+// Universal Backdrop Click Listener (Closes modals when clicking outside content)
+window.addEventListener('click', function(event) {
+    const clipModal = document.getElementById('clip-modal');
+    const surveyingModal = document.getElementById('surveying-modal');
+    const projectModal = document.getElementById('project-modal');
+
+    if (event.target === clipModal) closeClipModal();
+    if (event.target === surveyingModal) closeSurveyingModal();
+    if (event.target === projectModal) closeProjectModal();
+});
+        // Tab switching function
+        function openTab(event, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) selectedTab.classList.add('active');
+
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(checkReveal, 100);
+        }
+
+        // Switch to tab directly via logo
+        function openTabDirect(tabName) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent.trim().toLowerCase() === tabName.toLowerCase()) {
+                    btn.click();
+                }
+            });
+        }   
+        function scrollToContact(event) {
+            event.preventDefault();
+            const footer = document.getElementById('footer-contact');
+            if (footer) {
+                footer.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Copy Email Function
+        function copyEmail() {
+            const email = "imb26@duke.edu";
+            navigator.clipboard.writeText(email).then(() => {
+                alert("Email copied to clipboard: " + email);
+            }).catch(err => {
+                console.error("Failed to copy email: ", err);
+            });
+        }
+
+        // Repeatable Scroll Reveal Observer
+        function checkReveal() {
+            const activeTab = document.querySelector('.tab-content.active');
+            if (!activeTab) return;
+
+            const reveals = activeTab.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 80;
+
+                if (elementTop < windowHeight - revealPoint && elementTop > -element.offsetHeight) {
+                    element.classList.add('visible');
+                } else {
+                    element.classList.remove('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('resize', checkReveal);
+        window.addEventListener('DOMContentLoaded', checkReveal);
+
+        const projectDetails = {
+            'heat-mapping': {
+                title: "Mapping Heat and Walkability for Duke Heat Governance",
+                image: "images/heat.jpg",
+                description: `
+                    <p>As a Bass Connections research team, students across schools at Duke come together to collect data, analyze, and make policy decisions. This project builds off of <a href="https://nicholasinstitute.duke.edu/project/heat-policy-innovation-hub" target="_blank" style="color: var(--primary-green); font-weight: 800; text-decoration: underline;">Duke's Heat Policy Innovation Hub</a> and their work on heat mapping the U.S. Virgin Islands.</p>
+                    <p>The goal of this project is to collect heat and walkability data on Duke's campus in order to inform a Duke Heat Action and Governance Plan.</p>
+                    
+                    <h3 style="color: var(--primary-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.2rem;">Background</h3>
+                    <p>Extreme heat touches every aspect of daily life. Even though air temperature and humidity are readily accessible, the way that communities experience and interact with heat is a completely separate metric. Actions like walking to the train for work or manual labor outside are not taken into account. Communities and organizational bodies can make better informed decisions through community heat mapping.</p>
+                    
+                    <h3 style="color: var(--primary-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.2rem;">Data Collection</h3>
+                    <p>Team members and I collected heat and walkability data on Duke's campus. This included using PocketLabs that take the air temperature, heat index, dew point, and humidity. On top of this, we took the Wet Bulb Globe Temperature (WBGT) in several high-traffic areas on campus. To assess surfaces on campus, we took thermal images of classrooms, pavement, and dorm rooms. In terms of walkability, we took qualitative observations of Duke's campus and input them into a quantitative walkability survey.</p>
+                    
+                    <h3 style="color: var(--primary-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.2rem;">Data Analysis Policy Recommendations</h3>
+                    <p>Coming soon...</p>
+                `
+            },
+            'volumetric-clip': {
+                title: "User Friendly Volumetric Measuring Clip",
+                image: "images/clip.JPG",
+                description: "An engineered 3D-printed clip designed for liquid measurement vessels to make precise volumetric readings faster, more accessible, and ergonomic for everyday laboratory and kitchen use."
+            },
+            'land-surveying': {
+                title: "Land Surveying/AutoCAD Physics Building",
+                image: "images/cad.png",
+                description: "A comprehensive site survey and digital drafting effort documenting the elevation contours, structural bounds, and surrounding foliage near Duke's Physics Building using total station equipment and AutoCAD software."
+            },
+            'room-filtration': {
+                title: "Room Filtration System (RFS)",
+                image: "images/filter.png",
+                description: "A low-cost, high-efficiency particulate air filtration box built to improve indoor air quality during high-pollen seasons and smoke events. Designed using accessible materials and tested for optimal CADR airflow rates."
+            }
+        };
+
+
+        
+    </script>
+</body>
+</html>
